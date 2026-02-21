@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Бүтээгдэхүүн | Art House</title>
+    <link rel="icon" type="image/jpg" href="smalllogo.jpg">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -98,7 +100,7 @@
 
                 <div class="p-8 bg-slate-900 text-white rounded-lg mb-10">
                     <h5 class="text-l font-bold mb-4 uppercase tracking-wide">Бүтээгдэхүүний танилцуулга бичлэг</h5>
-                    <button onclick="openVideo('https://youtu.be/cEiedz53kjU')" class="inline-block bg-white text-slate-900 px-10 py-4 font-bold uppercase text-xs tracking-[0.2em] hover:bg-slate-200 transition shadow-xl">Видео үзэх</button>
+                    <button onclick="openVideo('https://www.youtube.com/watch?v=cEiedz53kjU')" class="inline-block bg-white text-slate-900 px-10 py-4 font-bold uppercase text-xs tracking-[0.2em] hover:bg-slate-200 transition shadow-xl">Видео үзэх</button>
                 </div>
 
                 <table class="w-full border-collapse text-sm">
@@ -150,14 +152,13 @@
             
             img.style.display = 'none';
             
-            // Logic to convert various YouTube link formats to Embed format
             let videoId = "";
-            if (videoSrc.includes("youtu.be/")) {
-                videoId = videoSrc.split("youtu.be/")[1];
+            if (videoSrc.includes("v=")) {
+                videoId = videoSrc.split("v=")[1].split("&")[0];
+            } else if (videoSrc.includes("youtu.be/")) {
+                videoId = videoSrc.split("youtu.be/")[1].split("?")[0];
             } else if (videoSrc.includes("shorts/")) {
-                videoId = videoSrc.split("shorts/")[1];
-            } else if (videoSrc.includes("watch?v=")) {
-                videoId = videoSrc.split("watch?v=")[1].split("&")[0];
+                videoId = videoSrc.split("shorts/")[1].split("?")[0];
             }
 
             iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
@@ -170,7 +171,7 @@
             const lightbox = document.getElementById('lightbox');
             const iframe = document.getElementById('lightbox-iframe');
             
-            iframe.src = ""; // Stops the video
+            iframe.src = ""; 
             lightbox.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
