@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art House | Барилгын Материал</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: #ffffff;
+            background-image: 
+                linear-gradient(180deg, #FFFFFF 0%, #F3F4F6 50%, #D1D5DB 100%),
+                radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 100% 100%, 30px 30px;
+            background-attachment: fixed;
+        }
+
+        .clip-path-diag {
+            clip-path: polygon(0 0, 100% 0, 100% 98%, 0% 100%);
+        }
+
+        .bg-text {
+            font-size: 18vw;
+            line-height: 1;
+            font-weight: 900;
+            color: rgba(0,0,0,0.02);
+            position: absolute;
+            right: -2rem;
+            top: 20%;
+            z-index: -1;
+            user-select: none;
+            pointer-events: none;
+            text-transform: uppercase;
+        }
+
+        .swiper-button-next, .swiper-button-prev { 
+            color: #0f172a !important; 
+            background: rgba(255, 255, 255, 0.9); 
+            width: 55px; 
+            height: 55px; 
+            border-radius: 50%;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 20;
+        }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: 22px; font-weight: bold; }
+
+        .project-overlay {
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 50%, rgba(15, 23, 42, 0) 100%);
+        }
+
+        .product-card img { transition: transform 0.5s ease; }
+        .product-card:hover img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="text-slate-900 font-sans antialiased">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 h-20">
+        <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+            <div class="flex items-center h-full">
+                <a href="#" class="flex items-center gap-4 relative">
+                    <img src="logotransparent.png" 
+                         alt="Art House Logo" 
+                         class="h-36 w-auto object-contain drop-shadow-md">
+                    <span class="text-2xl font-black uppercase tracking-widest text-slate-900">
+                        Arthouse
+                    </span>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-12 text-[11px] font-bold uppercase tracking-[0.3em]">
+                <a href="#about" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1">Бидний тухай</a>
+                <a href="#products" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1">Бүтээгдэхүүн</a>
+                <a href="#work" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1">Бидний ажил</a>
+                <a href="#contact" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1 text-slate-900 uppercase">Холбоо барих</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="about" class="relative min-h-screen flex items-center overflow-hidden">
+        <div class="bg-text">ART HOUSE</div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center py-20">
+            <div class="lg:col-span-7 z-10">
+                <div class="inline-flex items-center gap-2 mb-8">
+                    <span class="h-[2px] w-16 bg-slate-900"></span>
+                    <span class="text-sm font-bold uppercase tracking-[0.4em] text-slate-500">Бидний Алсын Хараа</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black mb-10 leading-[0.85] uppercase italic text-slate-900">
+                    Art House <br><span class="text-slate-400 not-italic">Барилгын</span> <br>Материал.
+                </h1>
+                <p class="text-2xl text-slate-600 max-w-2xl mb-12 leading-relaxed">
+                    Бид барилгын гадна талын өндөр чанартай материал, шийдлүүдийг мэргэжлийн түвшинд нийлүүлдэг. Архитектурын алсын харааг бодит бүтээц болгох хамгийн найдвартай гүүр нь бид юм. Чанар бол бидний үндсэн зарчим.
+                </p>
+                <div class="flex flex-wrap gap-16 border-t border-slate-200 pt-12">
+                    <div>
+                        <h4 class="text-5xl font-black italic">500+</h4>
+                        <p class="text-xs uppercase font-black text-slate-400 tracking-widest mt-2">Хэрэгжүүлсэн Төсөл</p>
+                    </div>
+                    <div>
+                        <h4 class="text-5xl font-black italic">15+</h4>
+                        <p class="text-xs uppercase font-black text-slate-400 tracking-widest mt-2">Жилийн Туршлага</p>
+                    </div>
+                    <div>
+                        <h4 class="text-5xl font-black italic">100%</h4>
+                        <p class="text-xs uppercase font-black text-slate-400 tracking-widest mt-2">Чанарын баталгаа</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+                <div class="absolute -right-10 -bottom-10 w-full h-full border-[15px] border-slate-200/50 -z-10"></div>
+                <div class="relative overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800" 
+                         class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000 transform hover:scale-105">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="relative py-32 bg-slate-900 text-white clip-path-diag">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black uppercase italic tracking-tighter mb-20">Манай Бүтээгдэхүүн</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="product-card bg-slate-800 p-4 rounded shadow-lg flex flex-col h-full">
+                    <img src="cpanelmain.jpg" class="w-full h-60 object-cover mb-6">
+                    <h3 class="text-2xl font-bold mb-4 italic">1. C-PANEL</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Керамик чулуун гадаргуутай дулаалгатай фасад.</p>
+                    <div class="mt-auto">
+                        <a href="2c-panel.html" class="inline-block text-[10px] font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-slate-900 transition w-full text-center">Дэлгэрэнгүй үзэх</a>
+                    </div>
+                </div>
+
+                <div class="product-card bg-slate-800 p-4 rounded shadow-lg flex flex-col h-full">
+                    <img src="mpanelmain1.jpg" class="w-full h-60 object-cover mb-6">
+                    <h3 class="text-2xl font-bold mb-4 italic">2. M-PANEL</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Метал гадаргуутай дулаалгатай фасад.</p>
+                    <div class="mt-auto">
+                        <a href="3m-panel.html" class="inline-block text-[10px] font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-slate-900 transition w-full text-center">Дэлгэрэнгүй үзэх</a>
+                    </div>
+                </div>
+
+                <div class="product-card bg-slate-800 p-4 rounded shadow-lg flex flex-col h-full">
+                    <img src="https://images.unsplash.com/photo-1495033158763-d62f3299c1a3?auto=format&fit=crop&q=80&w=800" class="w-full h-60 object-cover mb-6">
+                    <h3 class="text-2xl font-bold mb-4 italic">3. U-PANEL</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Цемент гадаргуутай дулаалгатай фасад.</p>
+                    <div class="mt-auto">
+                        <a href="4u-panel.html" class="inline-block text-[10px] font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-slate-900 transition w-full text-center">Дэлгэрэнгүй үзэх</a>
+                    </div>
+                </div>
+
+                <div class="product-card bg-slate-800 p-4 rounded shadow-lg flex flex-col h-full">
+                    <img src="https://images.unsplash.com/photo-1534237710431-e2fc698436d0?auto=format&fit=crop&q=80&w=800" class="w-full h-60 object-cover mb-6">
+                    <h3 class="text-2xl font-bold mb-4 italic">4. Гоёлын хүрээ</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Барилгын чимэглэл, цонхны хүрээний.</p>
+                    <div class="mt-auto">
+                        <a href="5decor.html" class="inline-block text-[10px] font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-slate-900 transition w-full text-center">Дэлгэрэнгүй үзэх</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-32 max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-black uppercase italic mb-16">Бидний Гүйцэтгэсэн Ажил</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide aspect-video">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                    <div class="project-overlay absolute inset-x-0 bottom-0 p-10 text-white">
+                        <h4 class="text-2xl font-bold uppercase mb-2">Логистикийн Төв</h4>
+                        <p class="text-sm italic opacity-80">📍 Улаанбаатар | 🏗️ Ашигласан: C-PANEL</p>
+                    </div>
+                </div> 
+                <div class="swiper-slide aspect-video">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                    <div class="project-overlay absolute inset-x-0 bottom-0 p-10 text-white">
+                        <h4 class="text-2xl font-bold uppercase mb-2">Үйлдвэрийн Барилга</h4>
+                        <p class="text-sm italic opacity-80">📍 Дархан | 🏗️ Ашигласан: M-PANEL</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-white border-t border-slate-200 py-32 text-center">
+        <h2 class="text-5xl font-black uppercase mb-16 italic text-slate-900">Холбоо барих</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-6xl mx-auto px-6">
+            <div>
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Утас</p>
+                <a href="tel:+97600000000" class="text-xl font-black hover:text-slate-500 transition">+976 88112124<br> +976 99234050</a>
+            </div>
+            <div>
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Фэйсбүүк</p>
+                <a href="#" class="text-xl font-black hover:text-slate-500 transition">Art House Mongolia</a>
+            </div>
+            <div>
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">И-Мэйл</p>
+                <a href="mailto:info@arthouse.mn" class="text-xl font-black hover:text-slate-500 transition lowercase">arthousemgl@gmail.com</a>
+            </div>
+            <div>
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Хаяг</p>
+                <p class="text-lg font-black leading-tight">Улаанбаатар хот, <br>Баянзүрх дүүрэг, 27-р хороо, Сэлбэ 22 гудамж, 525 тоот </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-white border-t text-center font-bold text-[10px] uppercase text-slate-400 tracking-widest">© 2026 Art House.</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            breakpoints: { 768: { slidesPerView: 1.2, centeredSlides: true } }
+        });
+    </script>
+</body>
+</html>
