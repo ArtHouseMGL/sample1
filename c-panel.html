@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="mn">
 <head>
     <meta charset="UTF-8">
@@ -97,7 +97,7 @@
 
                 <div class="p-8 bg-slate-900 text-white rounded-lg mb-10">
                     <h5 class="text-l font-bold mb-4 uppercase tracking-wide">Бүтээгдэхүүний танилцуулга бичлэг</h5>
-                    <button onclick="openVideo('https://youtube.com/watch?v=/iB0wypw7iac')" class="inline-block bg-white text-slate-900 px-10 py-4 font-bold uppercase text-xs tracking-[0.2em] hover:bg-slate-200 transition shadow-xl">Видео үзэх</button>
+                    <button onclick="openVideo('https://youtube.com/watch?v=iB0wypw7iac')" class="inline-block bg-white text-slate-900 px-10 py-4 font-bold uppercase text-xs tracking-[0.2em] hover:bg-slate-200 transition shadow-xl">Видео үзэх</button>
                 </div>
 
                 <table class="w-full border-collapse text-sm">
@@ -149,10 +149,20 @@
             
             img.style.display = 'none';
             
-            // Convert YouTube shorts link to embed link
-            let embedUrl = videoSrc.replace("shorts/", "embed/");
-            // Force autoplay and mute if desired by adding params
-            iframe.src = embedUrl + "?autoplay=1";
+            // Advanced ID extraction for various YouTube URL types
+            let videoId = "";
+            if (videoSrc.includes("v=")) {
+                videoId = videoSrc.split("v=")[1].split("&")[0];
+            } else if (videoSrc.includes("shorts/")) {
+                videoId = videoSrc.split("shorts/")[1].split("?")[0];
+            } else if (videoSrc.includes("youtu.be/")) {
+                videoId = videoSrc.split("youtu.be/")[1].split("?")[0];
+            } else if (videoSrc.includes("embed/")) {
+                videoId = videoSrc.split("embed/")[1].split("?")[0];
+            }
+
+            // Set source with autoplay enabled
+            iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
             
             iframe.style.display = 'block';
             lightbox.style.display = 'flex';
