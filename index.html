@@ -40,7 +40,7 @@
         .product-card img { transition: transform 0.5s ease; }
         .product-card:hover img { transform: scale(1.05); }
 
-        /* FIXED MOBILE MENU LOGIC */
+        /* FIXED MOBILE MENU STYLING */
         #mobile-menu {
             top: 80px;
             height: calc(100vh - 80px);
@@ -48,16 +48,15 @@
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
-            pointer-events: none; /* Prevents clicking links when hidden */
+            pointer-events: none;
         }
         #mobile-menu.active {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
-            pointer-events: auto; /* Allows clicking links when visible */
+            pointer-events: auto;
         }
         
-        /* Animated Hamburger to X */
         .nav-icon { width: 30px; height: 20px; position: relative; cursor: pointer; }
         .nav-icon span { display: block; position: absolute; height: 3px; width: 100%; background: #0f172a; border-radius: 9px; opacity: 1; left: 0; transition: .25s ease-in-out; }
         .nav-icon span:nth-child(1) { top: 0px; }
@@ -73,9 +72,9 @@
     <nav class="sticky top-0 z-[110] bg-white/95 backdrop-blur-md border-b border-slate-200 h-20">
         <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
             <div class="flex items-center h-full">
-                <a href="#" class="flex items-center gap-4 relative">
-                    <img src="logotransparent.png" alt="Art House Logo" class="h-36 w-auto object-contain drop-shadow-md">
-                    <span class="text-2xl font-black uppercase tracking-widest text-slate-900">Arthouse</span>
+                <a href="#" class="flex items-center gap-2 relative">
+                    <img src="logotransparent.png" alt="Art House Logo" class="h-28 sm:h-36 w-auto object-contain drop-shadow-md">
+                    <span class="text-xl sm:text-2xl font-black uppercase tracking-widest text-slate-900">Arthouse</span>
                 </a>
             </div>
 
@@ -88,9 +87,7 @@
 
             <button id="menu-toggle" class="md:hidden z-[120] p-2 focus:outline-none">
                 <div class="nav-icon" id="nav-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </div>
             </button>
         </div>
@@ -256,7 +253,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Swiper Logic
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -266,7 +262,6 @@
             breakpoints: { 768: { slidesPerView: 1.2, centeredSlides: true } }
         });
 
-        // Mobile Menu Logic
         const menuToggle = document.getElementById('menu-toggle');
         const navIcon = document.getElementById('nav-icon');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -274,7 +269,6 @@
         function toggleMenu() {
             mobileMenu.classList.toggle('active');
             navIcon.classList.toggle('open');
-            // Prevent scrolling when menu is open
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
         }
 
