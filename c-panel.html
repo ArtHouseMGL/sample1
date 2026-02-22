@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="p-8 bg-slate-900 text-white rounded-lg mb-10 text-left">
-                    <h5 class="text-m font-bold mb-4 uppercase">Бүтээгдэхүүний танилцуулга бичлэг</h5>
+                    <h5 class="text-lg font-bold mb-4 uppercase italic">Бүтээгдэхүүний танилцуулга бичлэг</h5>
                     <button onclick="openVideo('iB0wypw7iac')" class="inline-block bg-white text-slate-900 px-10 py-4 font-bold uppercase text-xs tracking-[0.2em] hover:bg-slate-200 transition shadow-xl">Видео үзэх</button>
                 </div>
 
@@ -216,7 +216,6 @@
 
         function openVideo(videoId) {
             const iframe = document.getElementById('lightbox-iframe');
-            // FIX: Ensure correct YouTube embed URL structure
             iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
             document.getElementById('lightbox-img').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
