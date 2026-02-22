@@ -59,28 +59,47 @@
 
         .product-card img { transition: transform 0.5s ease; }
         .product-card:hover img { transform: scale(1.05); }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body class="text-slate-900 font-sans antialiased">
 
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 h-20">
+    <nav class="sticky top-0 z-[100] bg-white/80 backdrop-blur-xl border-b border-slate-200 h-20">
         <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
             <div class="flex items-center h-full">
                 <a href="#" class="flex items-center gap-4 relative">
-                    <img src="logotransparent.png" 
-                         alt="Art House Logo" 
-                         class="h-36 w-auto object-contain drop-shadow-md">
-                    <span class="text-2xl font-black uppercase tracking-widest text-slate-900">
-                        Arthouse
-                    </span>
+                    <img src="logotransparent.png" alt="Art House Logo" class="h-36 w-auto object-contain drop-shadow-md">
+                    <span class="text-2xl font-black uppercase tracking-widest text-slate-900">Arthouse</span>
                 </a>
             </div>
+
             <div class="hidden md:flex items-center space-x-12 text-[11px] font-bold uppercase tracking-[0.3em]">
                 <a href="#about" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1">Бидний тухай</a>
                 <a href="#products" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1">Бүтээгдэхүүн</a>
                 <a href="#work" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1">Бидний ажил</a>
                 <a href="#contact" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1 text-slate-900 uppercase">Холбоо барих</a>
             </div>
+
+            <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 z-[110]">
+                <span class="w-8 h-1 bg-slate-900 rounded"></span>
+                <span class="w-8 h-1 bg-slate-900 rounded"></span>
+                <span class="w-8 h-1 bg-slate-900 rounded"></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-[105] flex flex-col items-center justify-center space-y-10 text-xl font-black uppercase tracking-widest md:hidden">
+            <a href="#about" onclick="toggleMenu()" class="hover:text-slate-500">Бидний тухай</a>
+            <a href="#products" onclick="toggleMenu()" class="hover:text-slate-500">Бүтээгдэхүүн</a>
+            <a href="#work" onclick="toggleMenu()" class="hover:text-slate-500">Бидний ажил</a>
+            <a href="#contact" onclick="toggleMenu()" class="hover:text-slate-500">Холбоо барих</a>
         </div>
     </nav>
 
@@ -237,6 +256,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // Swiper Logic
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -245,6 +265,16 @@
             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
             breakpoints: { 768: { slidesPerView: 1.2, centeredSlides: true } }
         });
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
     </script>
 </body>
 </html>
