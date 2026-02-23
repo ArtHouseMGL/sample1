@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Төслийн нэр | Art House</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #f9fafb; }
+        .gallery-img { cursor: zoom-in; transition: 0.3s; }
+        .gallery-img:hover { filter: brightness(0.9); }
+    </style>
+</head>
+<body class="text-slate-900 font-sans">
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 h-16">
+        <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+            <a href="index.html" class="font-black italic tracking-widest text-xl uppercase">Art House</a>
+            <a href="index.html#work" class="text-xs font-bold uppercase tracking-widest border border-slate-900 px-4 py-2 hover:bg-slate-900 hover:text-white transition">← Буцах</a>
+        </div>
+    </nav>
+
+    <header class="relative h-[60vh] overflow-hidden">
+        <img src="baganuurmain.png" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="text-center text-white">
+                <h1 class="text-5xl md:text-7xl font-black uppercase italic mb-4">Багануур Төсөл</h1>
+                <p class="text-xl tracking-widest uppercase opacity-80">Орон сууцны фасад шинэчлэл</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-5xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-3 gap-12 border-b border-slate-200 pb-16">
+            <div>
+                <h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-[0.2em]">Байршил</h4>
+                <p class="text-xl font-bold">Улаанбаатар, Багануур дүүрэг</p>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-[0.2em]">Ашигласан материал</h4>
+                <p class="text-xl font-bold">C-PANEL (Керамик гадаргуутай)</p>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-[0.2em]">Хугацаа</h4>
+                <p class="text-xl font-bold">45 хоногт гүйцэтгэв</p>
+            </div>
+        </div>
+
+        <div class="py-16">
+            <h3 class="text-3xl font-black uppercase italic mb-8">Ажлын явц ба гүйцэтгэл</h3>
+            <p class="text-lg text-slate-600 leading-relaxed mb-10">
+                Энэхүү төсөл дээр бид барилгын хуучин фасадыг бүрэн буулгаж, эрчим хүчний хэмнэлттэй C-Panel хавтанг суурилуулсан. Үр дүнд нь дулаан алдагдал 40% буурч, барилгын өнгө үзэмж орчин үеийн шийдэлтэй болсон. (Энд төслийн тухай нэмэлт тайлбар бичиж болно).
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <img src="project1-step1.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 1">
+                <img src="project1-step2.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 2">
+                <img src="project1-step3.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 3">
+                <img src="project1-step4.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 4">
+                <img src="project1-step5.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 5">
+                <img src="project1-step6.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 6">
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-white border-t text-center font-bold text-[10px] uppercase text-slate-400 tracking-widest">
+        © 2026 Art House | arthouse.mn
+    </footer>
+
+</body>
+</html>
