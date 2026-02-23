@@ -3,62 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Төслийн нэр | Art House</title>
+    <title>Төслүүд | Art House</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         body { background: #f9fafb; }
-        .gallery-img { cursor: zoom-in; transition: 0.3s; }
-        .gallery-img:hover { filter: brightness(0.9); }
+        .gallery-card { cursor: pointer; overflow: hidden; position: relative; aspect-ratio: 1 / 1; }
+        .gallery-img { transition: transform 0.5s ease; width: 100%; height: 100%; object-fit: cover; }
+        .gallery-card:hover .gallery-img { transform: scale(1.05); filter: brightness(0.9); }
+        
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+        }
+        .swiper { width: 85%; height: 85%; }
+        .swiper-slide { display: flex; justify-content: center; align-items: center; }
+        .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; z-index: 1100; }
+        
+        .swiper-button-next, .swiper-button-prev { color: white !important; }
+        .swiper-pagination-bullet { background: white !important; }
     </style>
 </head>
 <body class="text-slate-900 font-sans">
 
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 h-16">
+    <div id="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper" id="slider-wrapper"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 h-20">
         <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
-            <a href="index.html" class="font-black italic tracking-widest text-xl uppercase">Art House</a>
-            <a href="index.html#work" class="text-xs font-bold uppercase tracking-widest border border-slate-900 px-4 py-2 hover:bg-slate-900 hover:text-white transition">← Буцах</a>
+            <div class="flex items-center h-full">
+                <a href="index.html" class="flex items-center gap-4 relative">
+                    <img src="logotransparent.png" 
+                         alt="Art House Logo" 
+                         class="h-36 w-auto object-contain drop-shadow-md">
+                    <span class="text-2xl font-black uppercase tracking-widest text-slate-900">
+                        Arthouse
+                    </span>
+                </a>
+            </div>
+            <a href="index.html#work" class="text-xs font-bold uppercase tracking-widest">← Буцах</a>
         </div>
     </nav>
 
-    <header class="relative h-[60vh] overflow-hidden">
-        <img src="baganuurmain.png" class="w-full h-full object-cover">
+    <header class="relative min-h-[30vh] md:h-[50vh] overflow-hidden bg-slate-900">
+        <img src="baganuurmain.png" class="w-full h-full object-contain md:object-cover">
         <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div class="text-center text-white">
-                <h1 class="text-5xl md:text-7xl font-black uppercase italic mb-4">Багануур Төсөл</h1>
-                <p class="text-xl tracking-widest uppercase opacity-80">Орон сууцны фасад шинэчлэл</p>
+            <div class="text-center text-white px-6">
+                <h1 class="text-4xl md:text-7xl font-black uppercase italic mb-4">C-PANEL Төслүүд</h1>
+                <p class="text-sm md:text-xl tracking-[0.3em] uppercase opacity-90">Гүйцэтгэсэн ажлуудын цомог</p>
             </div>
         </div>
     </header>
 
-    <section class="max-w-5xl mx-auto px-6 py-20">
-        <div class="grid md:grid-cols-3 gap-12 border-b border-slate-200 pb-16">
-            <div>
-                <h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-[0.2em]">Байршил</h4>
-                <p class="text-xl font-bold">Улаанбаатар, Багануур дүүрэг</p>
-            </div>
-            <div>
-                <h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-[0.2em]">Ашигласан материал</h4>
-                <p class="text-xl font-bold">C-PANEL (Керамик гадаргуутай)</p>
-            </div>
-            <div>
-                <h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-[0.2em]">Хугацаа</h4>
-                <p class="text-xl font-bold">45 хоногт гүйцэтгэв</p>
-            </div>
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-slate-200 pb-12 mb-16">
+            <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-widest">Ангилал</h4><p class="text-lg font-bold italic">Фасад / Дулаалга</p></div>
+            <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-widest">Нийт төсөл</h4><p class="text-lg font-bold italic">10+ Барилга</p></div>
+            <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-widest">Байршил</h4><p class="text-lg font-bold italic">Улаанбаатар & Орон нутаг</p></div>
+            <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-widest">Материал</h4><p class="text-lg font-bold italic">C-PANEL</p></div>
         </div>
 
-        <div class="py-16">
-            <h3 class="text-3xl font-black uppercase italic mb-8">Ажлын явц ба гүйцэтгэл</h3>
-            <p class="text-lg text-slate-600 leading-relaxed mb-10">
-                Энэхүү төсөл дээр бид барилгын хуучин фасадыг бүрэн буулгаж, эрчим хүчний хэмнэлттэй C-Panel хавтанг суурилуулсан. Үр дүнд нь дулаан алдагдал 40% буурч, барилгын өнгө үзэмж орчин үеийн шийдэлтэй болсон. (Энд төслийн тухай нэмэлт тайлбар бичиж болно).
-            </p>
+        <div class="mb-20">
+            <h3 class="text-3xl font-black uppercase italic mb-8">Гүйцэтгэлийн Галерей</h3>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="gallery-card shadow-lg" onclick="openProject('project1')">
+                    <img src="baganuurblock1.png" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Багануур дүүрэг</p>
+                    </div>
+                </div>
+                <div class="gallery-card shadow-lg" onclick="openProject('project2')"><img src="project2.jpg" class="gallery-img"></div>
+                <div class="gallery-card shadow-lg" onclick="openProject('project3')"><img src="project3.jpg" class="gallery-img"></div>
+                <div class="gallery-card shadow-lg" onclick="openProject('project4')"><img src="project4.jpg" class="gallery-img"></div>
+                <div class="gallery-card shadow-lg" onclick="openProject('project5')"><img src="project5.jpg" class="gallery-img"></div>
+                <div class="gallery-card shadow-lg" onclick="openProject('project6')"><img src="project6.jpg" class="gallery-img"></div>
+                <div class="gallery-card shadow-lg" onclick="openProject('project7')"><img src="project7.jpg" class="gallery-img"></div>
+                <div class="gallery-card shadow-lg" onclick="openProject('project8')"><img src="project8.jpg" class="gallery-img"></div>
+                <div class="gallery-card shadow-lg" onclick="openProject('project9')"><img src="project9.jpg" class="gallery-img"></div>
+            </div>
+        </div>
+    </main>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <img src="project1-step1.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 1">
-                <img src="project1-step2.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 2">
-                <img src="project1-step3.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 3">
-                <img src="project1-step4.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 4">
-                <img src="project1-step5.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 5">
-                <img src="project1-step6.jpg" class="gallery-img w-full h-80 object-cover rounded-sm shadow-md" alt="Project Step 6">
+    <section id="contact" class="bg-white border-t border-slate-200 py-32 text-center">
+        <h2 class="text-5xl font-black uppercase mb-16 italic text-slate-900">Холбоо барих</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-2xl mx-auto px-6">
+            <div>
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Утас</p>
+                <div class="flex flex-col gap-2">
+                    <a href="tel:+97688112124" class="text-xl font-black hover:text-slate-500 transition">88112124</a>
+                    <a href="tel:+97699234050" class="text-xl font-black hover:text-slate-500 transition">99234050</a>
+                </div>
+            </div>
+            <div>
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Фэйсбүүк</p>
+                <a href="https://www.facebook.com/ArtHouseMGL" target="_blank" class="text-xl font-black hover:text-slate-500 transition">Art House Mongolia</a>
             </div>
         </div>
     </section>
@@ -66,6 +116,42 @@
     <footer class="py-10 bg-white border-t text-center font-bold text-[10px] uppercase text-slate-400 tracking-widest">
         © 2026 Art House | arthouse.mn
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            pagination: { el: ".swiper-pagination", clickable: true },
+        });
+
+        const projectImages = {
+            project1: ['baganuurmain.png', 'baganuur2.png', 'baganuur3.png', 'baganuur4.png', 'baganuur5.png'],
+            project2: ['project2.jpg', 'p2-2.jpg', 'p2-3.jpg', 'p2-4.jpg', 'p2-5.jpg'],
+            project3: ['project3.jpg', 'p3-2.jpg', 'p3-3.jpg', 'p3-4.jpg', 'p3-5.jpg'],
+            project4: ['project4.jpg', 'p4-2.jpg', 'p4-3.jpg', 'p4-4.jpg', 'p4-5.jpg'],
+            project5: ['project5.jpg', 'p5-2.jpg', 'p5-3.jpg', 'p5-4.jpg', 'p5-5.jpg'],
+            project6: ['project6.jpg', 'p6-2.jpg', 'p6-3.jpg', 'p6-4.jpg', 'p6-5.jpg'],
+            project7: ['project7.jpg', 'p7-2.jpg', 'p7-3.jpg', 'p7-4.jpg', 'p7-5.jpg'],
+            project8: ['project8.jpg', 'p8-2.jpg', 'p8-3.jpg', 'p8-4.jpg', 'p8-5.jpg'],
+            project9: ['project9.jpg', 'p9-2.jpg', 'p9-3.jpg', 'p9-4.jpg', 'p9-5.jpg']
+        };
+
+        function openProject(projectId) {
+            const wrapper = document.getElementById('slider-wrapper');
+            const photos = projectImages[projectId] || [];
+            wrapper.innerHTML = photos.map(src => `<div class="swiper-slide"><img src="${src}"></div>`).join('');
+            document.getElementById('lightbox').style.display = 'block';
+            swiper.update();
+            swiper.slideTo(0, 0);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 
 </body>
 </html>
