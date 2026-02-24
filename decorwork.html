@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Төслүүд | Art House</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body { background: #f9fafb; }
+        .gallery-card { cursor: pointer; overflow: hidden; position: relative; aspect-ratio: 1 / 1; }
+        .gallery-img { transition: transform 0.5s ease; width: 100%; height: 100%; object-fit: cover; }
+        .gallery-card:hover .gallery-img { transform: scale(1.05); filter: brightness(0.9); }
+        
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+        }
+        .swiper { width: 85%; height: 85%; }
+        .swiper-slide { display: flex; justify-content: center; align-items: center; }
+        .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; z-index: 1100; }
+        
+        .swiper-button-next, .swiper-button-prev { color: white !important; }
+        .swiper-pagination-bullet { background: white !important; }
+    </style>
+</head>
+<body class="text-slate-900 font-sans">
+
+    <div id="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper" id="slider-wrapper"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 h-20">
+        <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+            <div class="flex items-center h-full">
+                <a href="index.html" class="flex items-center gap-4 relative">
+                    <img src="logotransparent.png" 
+                         alt="Art House Logo" 
+                         class="h-36 w-auto object-contain drop-shadow-md">
+                    <span class="text-2xl font-black uppercase tracking-widest text-slate-900">
+                        Arthouse
+                    </span>
+                </a>
+            </div>
+            <a href="index.html" class="text-xs font-bold uppercase tracking-widest">← Буцах</a>
+        </div>
+    </nav>
+
+    <header class="relative min-h-[30vh] md:h-[50vh] overflow-hidden bg-slate-900">
+        <img src="5nbuudalblock.png" class="w-full h-full object-contain md:object-cover">
+        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="text-center text-white px-6">
+                <h1 class="text-4xl md:text-7xl font-black uppercase italic mb-4">Гоёлын Хүрээний Төслүүд</h1>
+                <p class="text-sm md:text-xl tracking-[0.3em] uppercase opacity-90">Гүйцэтгэсэн ажлуудын цомог</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-slate-200 pb-12 mb-16">
+            <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-widest">Ангилал</h4><p class="text-lg font-bold italic">Гоёлын Фасад Дулаалга</p></div>
+            <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-widest">Нийт төсөл</h4><p class="text-lg font-bold italic">10+ Барилга</p></div>
+            <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-widest">Байршил</h4><p class="text-lg font-bold italic">Улаанбаатар & Орон нутаг</p></div>
+            <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-widest">Материал</h4><p class="text-lg font-bold italic">Хөөсөнцөр</p></div>
+        </div>
+
+        <div class="mb-20">
+            <h3 class="text-3xl font-black uppercase italic mb-8">Гүйцэтгэлийн Галерей</h3>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="gallery-card shadow-lg" onclick="openProject('project1')">
+                    <img src="hadat2.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Хадат Вилла 1</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card shadow-lg" onclick="openProject('project2')">
+                    <img src="hadat vila 3.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Хадат Вилла 3</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card shadow-lg" onclick="openProject('project3')">
+                    <img src="halhgol3.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Халх гол </p>
+                    </div>
+                </div>
+
+                <div class="gallery-card shadow-lg" onclick="openProject('project4')">
+                    <img src="dnukht2.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Нүхт </p>
+                    </div>
+                </div>
+            
+                <div class="gallery-card shadow-lg" onclick="openProject('project5')">
+                    <img src="maxvilla3.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Макс Вилла</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card shadow-lg" onclick="openProject('project6')">
+                    <img src="sahrgamorti4.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Шарга Морьт</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card shadow-lg" onclick="openProject('project7')">
+                    <img src="tuguldur2.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Төгөлдөр төв</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card shadow-lg" onclick="openProject('project8')">
+                    <img src="ub6.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Улаанбаатар Зочид Буудал</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <section id="contact" class="bg-white border-t border-slate-200 py-32 text-center">
+        <h2 class="text-5xl font-black uppercase mb-16 italic text-slate-900">Холбоо барих</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-2xl mx-auto px-6">
+            <div>
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Утас</p>
+                <div class="flex flex-col gap-2">
+                    <a href="tel:+97688112124" class="text-xl font-black hover:text-slate-500 transition">88112124</a>
+                    <a href="tel:+97699234050" class="text-xl font-black hover:text-slate-500 transition">99234050</a>
+                </div>
+            </div>
+            <div>
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Фэйсбүүк</p>
+                <a href="https://www.facebook.com/ArtHouseMGL" target="_blank" class="text-xl font-black hover:text-slate-500 transition">Art House Mongolia</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-white border-t text-center font-bold text-[10px] uppercase text-slate-400 tracking-widest">
+        © 2026 Art House | arthouse.mn
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            pagination: { el: ".swiper-pagination", clickable: true },
+        });
+
+        const projectImages = {
+            project1: ['hadat2.jpg', 'hadat3.jpg', 'hadat4.jpg', 'hadat1.jpg'],
+            project2: ['hadat villa 3.jpg', 'hadat villa 2.jpg', 'hadat villa 4.jpg', 'hadat villa 1.jpg'],
+            project3: ['halhgol3.jpg', 'halhgol2.jpg', 'halhgol4.jpg', 'halhgol5.jpg', 'halhgol1.jpg'],
+            project4: ['dnukht2.jpg', 'dnukht3.jpg', 'dnukht1.jpg'],
+            project5: ['maxvilla3.jpg', 'maxvilla2.jpg', 'maxvilla4.jpg', 'maxvilla1.jpg'],
+            project6: ['sahrgamorti4.jpg', 'shargamorti2.jpg', 'shargamorti3.jpg', 'shargamorti1.jpg'],
+            project7: ['tuguldur2.jpg', 'tuguldur3.jpg', 'tuguldur4.jpg', 'tuguldur1.jpg'],
+            project8: ['ub6.jpg', 'ub7.jpg', 'ub8.jpg', 'ub9.jpg', 'ub10.jpg', 'ub2.jpg', 'ub3.jpg', 'ub4.jpg', 'ub5.jpg', 'ub1.jpg'],
+        };
+
+        function openProject(projectId) {
+            const wrapper = document.getElementById('slider-wrapper');
+            const photos = projectImages[projectId] || [];
+            wrapper.innerHTML = photos.map(src => `<div class="swiper-slide"><img src="${src}"></div>`).join('');
+            document.getElementById('lightbox').style.display = 'block';
+            swiper.update();
+            swiper.slideTo(0, 0);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+
+</body>
+</html>
