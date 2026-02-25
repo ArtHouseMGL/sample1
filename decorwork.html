@@ -57,7 +57,7 @@
     </nav>
 
     <header class="relative min-h-[30vh] md:h-[50vh] overflow-hidden bg-slate-900">
-        <img src="5nbuudalblock.png" class="w-full h-full object-contain md:object-cover">
+        <img src="" class="w-full h-full object-contain md:object-cover">
         <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
             <div class="text-center text-white px-6">
                 <h1 class="text-4xl md:text-7xl font-black uppercase italic mb-4">Гоёлын Хүрээний Төслүүд</h1>
@@ -90,7 +90,7 @@
                     <div class="absolute bottom-4 left-4 text-white pointer-events-none">
                         <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Хадат Вилла 3</p>
                     </div>
-                </div>
+                </div> 
 
                 <div class="gallery-card shadow-lg" onclick="openProject('project3')">
                     <img src="halhgol3.jpg" class="gallery-img">
@@ -134,6 +134,41 @@
                     </div>
                 </div>
 
+                <div class="gallery-card shadow-lg" onclick="openProject('project9')">
+                    <img src="artsad2.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Арцад</p>
+                    </div>
+                </div> 
+
+                <div class="gallery-card shadow-lg" onclick="openProject('project10')">
+                    <img src="bagatenger1.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Багатэнгэр</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-card shadow-lg" onclick="openProject('project11')">
+                    <img src="2nukht1.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Нүхт</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card shadow-lg" onclick="openProject('project12')">
+                    <img src="3nukht1.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Нүхт</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card shadow-lg" onclick="openProject('project13')">
+                    <img src="4nukht1.jpg" class="gallery-img">
+                    <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <p class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 inline-block">Нүхт</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
@@ -162,7 +197,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         const swiper = new Swiper(".mySwiper", {
-            loop: true,
+            loop: true, 
             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
             pagination: { el: ".swiper-pagination", clickable: true },
         });
@@ -176,6 +211,11 @@
             project6: ['sahrgamorti4.jpg', 'shargamorti2.jpg', 'shargamorti3.jpg', 'shargamorti1.jpg'],
             project7: ['tuguldur2.jpg', 'tuguldur3.jpg', 'tuguldur4.jpg', 'tuguldur1.jpg'],
             project8: ['ub6.jpg', 'ub7.jpg', 'ub8.jpg', 'ub9.jpg', 'ub10.jpg', 'ub2.jpg', 'ub3.jpg', 'ub4.jpg', 'ub5.jpg', 'ub1.jpg'],
+            project9: ['artsad2.jpg', 'artsad3.jpg', 'artsad4.jpg', 'artsad5.jpg', 'artsad6.jpg', 'artsad7.jpg', 'artsad8.jpg','artsad 1.jpg'],
+            project10: ['bagatenger1.jpg', 'bagatenger2.jpg', 'bagatenger3.jpg', 'bagatenger4.jpg', 'bagatenger5.jpg'],
+            project11: ['2nukht1.jpg', '2nukht2.jpg', '2nukht3.jpg', '2nukht4.jpg', '2nukht5.jpg'],
+            project12: ['3nukht1.jpg', '3nukht2.jpg', '3nukht3.jpg', '3nukht4.jpg', '3nukht5.jpg', '3nukht6.jpg', '3nukht7.jpg','3nukht8.jpg'],
+            project13: ['4nukht1.jpg', '4nukht2.jpg', '4nukht3.jpg', '4nukht4.jpg', '4nukht5.jpg'],
         };
 
         function openProject(projectId) {
