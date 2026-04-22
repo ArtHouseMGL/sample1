@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art House | Барилгын Материал</title>
+    
+    <meta name="description" content="Art House - Барилгын гадна талын өндөр чанартай материал, C-Panel, M-Panel нийлүүлэгч.">
+    <meta name="keywords" content="Art House, барилгын материал, C-Panel, M-Panel, фасад, Монгол, arthouse.mn">
+    
+    <link rel="icon" type="image/jpg" href="smalllogo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: #ffffff;
+            background-image: 
+                linear-gradient(180deg, #FFFFFF 0%, #F3F4F6 50%, #D1D5DB 100%),
+                radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 100% 100%, 30px 30px;
+            background-attachment: fixed;
+        }
+
+        .clip-path-diag { clip-path: polygon(0 0, 100% 0, 100% 98%, 0% 100%); }
+
+        .bg-text {
+            font-size: 18vw; line-height: 1; font-weight: 900; color: rgba(0,0,0,0.02);
+            position: absolute; right: -2rem; top: 20%; z-index: -1;
+            user-select: none; pointer-events: none; text-transform: uppercase;
+        }
+
+        .product-card img { transition: transform 0.5s ease; }
+        .product-card:hover img { transform: scale(1.05); }
+
+        .work-overlay {
+            background: rgba(0, 0, 0, 0.4); 
+            transition: background 0.3s ease;
+        }
+        .work-card:hover .work-overlay {
+            background: rgba(0, 0, 0, 0.6); 
+        }
+
+        #mobile-menu {
+            top: 80px;
+            height: calc(100vh - 80px);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            pointer-events: none;
+        }
+        #mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .nav-icon { width: 30px; height: 20px; position: relative; cursor: pointer; }
+        .nav-icon span { display: block; position: absolute; height: 3px; width: 100%; background: #0f172a; border-radius: 9px; opacity: 1; left: 0; transition: .25s ease-in-out; }
+        .nav-icon span:nth-child(1) { top: 0px; }
+        .nav-icon span:nth-child(2) { top: 10px; }
+        .nav-icon span:nth-child(3) { top: 20px; }
+        .nav-icon.open span:nth-child(1) { top: 10px; transform: rotate(135deg); }
+        .nav-icon.open span:nth-child(2) { opacity: 0; left: -60px; }
+        .nav-icon.open span:nth-child(3) { top: 10px; transform: rotate(-135deg); }
+    </style>
+</head>
+<body class="text-slate-900 font-sans antialiased">
+
+    <nav class="sticky top-0 z-[110] bg-white/95 backdrop-blur-md border-b border-slate-200 h-20">
+        <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+            <div class="flex items-center h-full">
+                <a href="#" class="flex items-center gap-2 relative">
+                    <img src="logotransparent.png" alt="Art House Logo" class="h-28 sm:h-36 w-auto object-contain drop-shadow-md">
+                    <span class="text-xl sm:text-2xl font-black uppercase tracking-widest text-slate-900">Arthouse</span>
+                </a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-12 text-[11px] font-bold uppercase tracking-[0.3em]">
+                <a href="#about" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1">Бидний тухай</a>
+                <a href="#products" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1">Бүтээгдэхүүн</a>
+                <a href="#work" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1">Бидний ажил</a>
+                <a href="#contact" class="hover:text-slate-500 transition border-b-2 border-transparent hover:border-slate-900 pb-1 text-slate-900 uppercase">Холбоо барих</a>
+            </div>
+
+            <button id="menu-toggle" class="md:hidden z-[120] p-2 focus:outline-none">
+                <div class="nav-icon" id="nav-icon">
+                    <span></span><span></span><span></span>
+                </div>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="fixed left-0 w-full bg-white z-[100] border-b border-slate-200 flex flex-col items-center justify-center space-y-10 md:hidden shadow-2xl">
+            <a href="#about" onclick="closeMenu()" class="text-xl font-black uppercase tracking-widest text-slate-900">Бидний тухай</a>
+            <a href="#products" onclick="closeMenu()" class="text-xl font-black uppercase tracking-widest text-slate-900">Бүтээгдэхүүн</a>
+            <a href="#work" onclick="closeMenu()" class="text-xl font-black uppercase tracking-widest text-slate-900">Бидний ажил</a>
+            <a href="#contact" onclick="closeMenu()" class="text-xl font-black uppercase tracking-widest text-slate-900">Холбоо барих</a>
+        </div>
+    </nav>
+
+    <section id="about" class="relative min-h-screen flex items-center overflow-hidden">
+        <div class="bg-text">ART HOUSE</div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center py-20">
+            <div class="lg:col-span-7 z-10">
+                <div class="inline-flex items-center gap-2 mb-8">
+                    <span class="h-[2px] w-16 bg-slate-900"></span>
+                    <span class="text-sm font-bold uppercase tracking-[0.4em] text-slate-500">Бидний Тухай</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black mb-10 leading-[0.9] uppercase text-slate-900">
+                    Art House <br><span class="text-slate-400">Барилгын</span> <br>
+                    <span class="text-4xl md:text-5xl inline-block mt-2">
+                        •Фасад <br>•Дулаалга <br>•Чимэглэл
+                    </span>
+                </h1>
+                <p class="text-lg text-slate-600 max-w-xl mb-12 leading-relaxed">
+                    Бид барилгын гадна талын өндөр чанартай материал, шийдлүүдийг мэргэжлийн түвшинд нийлүүлдэг. Архитектурын алсын харааг бодит бүтээц болгох хамгийн найдвартай гүүр нь бид юм. Чанар бол бидний үндсэн зарчим.
+                </p>
+                <div class="flex flex-wrap gap-16 border-t border-slate-200 pt-12">
+                    <div><h4 class="text-5xl font-black italic">500+</h4><p class="text-xs uppercase font-black text-slate-400 tracking-widest mt-2">Хэрэгжүүлсэн Төсөл</p></div>
+                    <div><h4 class="text-5xl font-black italic">15+</h4><p class="text-xs uppercase font-black text-slate-400 tracking-widest mt-2">Жилийн Туршлага</p></div>
+                    <div><h4 class="text-5xl font-black italic">100%</h4><p class="text-xs uppercase font-black text-slate-400 tracking-widest mt-2">Чанарын баталгаа</p></div>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+                <div class="absolute -right-10 -bottom-10 w-full h-full border-[15px] border-slate-200/50 -z-10"></div>
+                <div class="relative overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800" 
+                         class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000 transform hover:scale-105">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="relative py-32 bg-slate-900 text-white clip-path-diag">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black uppercase italic tracking-tighter mb-20">Бүтээгдэхүүн</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="product-card bg-slate-800 p-4 rounded shadow-lg flex flex-col h-full">
+                    <img src="cpanelmain.jpg" class="w-full h-60 object-cover mb-6">
+                    <h3 class="text-2xl font-bold mb-4 italic">1. C-PANEL</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Керамик чулуун гадаргуутай дулаалгатай фасад.</p>
+                    <div class="mt-auto"><a href="c-panel.html" class="inline-block text-[10px] font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-slate-900 transition w-full text-center">Дэлгэрэнгүй үзэх</a></div>
+                </div>
+                <div class="product-card bg-slate-800 p-4 rounded shadow-lg flex flex-col h-full">
+                    <img src="mpanelmain1.jpg" class="w-full h-60 object-cover mb-6">
+                    <h3 class="text-2xl font-bold mb-4 italic">2. M-PANEL</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Метал гадаргуутай дулаалгатай фасад.</p>
+                    <div class="mt-auto"><a href="m-panel.html" class="inline-block text-[10px] font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-slate-900 transition w-full text-center">Дэлгэрэнгүй үзэх</a></div>
+                </div>
+                <div class="product-card bg-slate-800 p-4 rounded shadow-lg flex flex-col h-full">
+                    <img src="COMING SOON.png" class="w-full h-60 object-cover mb-6">
+                    <h3 class="text-2xl font-bold mb-4 italic">3. U-PANEL</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Цемент гадаргуутай дулаалгатай фасад.</p>
+                    <div class="mt-auto"><a href="u-panel.html" class="inline-block text-[10px] font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-slate-900 transition w-full text-center">Дэлгэрэнгүй үзэх</a></div>
+                </div>
+                <div class="product-card bg-slate-800 p-4 rounded shadow-lg flex flex-col h-full">
+                    <img src="decormain.jpg" class="w-full h-60 object-cover mb-6">
+                    <h3 class="text-2xl font-bold mb-4 italic">4. Гоёлын хүрээ</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Барилгын чимэглэл, цонхны хүрээ.</p>
+                    <div class="mt-auto"><a href="decor.html" class="inline-block text-[10px] font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-slate-900 transition w-full text-center">Дэлгэрэнгүй үзэх</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-32 max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-black uppercase italic mb-16">Бидний Ажил</h2>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
+            
+            <div class="work-card relative aspect-square md:aspect-video overflow-hidden group cursor-pointer shadow-lg">
+                <a href="baganuur1.html" class="block w-full h-full">
+                    <img src="baganuurmain.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="work-overlay absolute inset-0 flex items-center justify-center text-center p-4">
+                        <p class="text-xl md:text-4xl font-black uppercase italic tracking-widest text-white">C-PANEL</p>
+                    </div>
+                </a>
+            </div> 
+
+            <div class="work-card relative aspect-square md:aspect-video overflow-hidden group cursor-pointer shadow-lg">
+                <a href="mpanelwork.html" class="block w-full h-full">
+                    <img src="Mpanelcover.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="work-overlay absolute inset-0 flex items-center justify-center text-center p-4">
+                        <p class="text-xl md:text-4xl font-black uppercase italic tracking-widest text-white">M-PANEL</p>
+                    </div>
+                </a>
+            </div> 
+
+            <div class="work-card relative aspect-square md:aspect-video overflow-hidden group cursor-pointer shadow-lg">
+                <img src="blanknavy.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                <div class="work-overlay absolute inset-0 flex items-center justify-center text-center p-4">
+                    <p class="text-xl md:text-4xl font-black uppercase italic tracking-widest text-white">U-PANEL</p>
+                </div>
+            </div>
+
+            <div class="work-card relative aspect-square md:aspect-video overflow-hidden group cursor-pointer shadow-lg">
+                <a href="decorwork.html" class="block w-full h-full">
+                    <img src="decorcover.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">   
+                    <div class="work-overlay absolute inset-0 flex items-center justify-center text-center p-4">
+                        <p class="text-xl md:text-4xl font-black uppercase italic tracking-widest text-white">Гоёлын хүрээ</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="bg-white border-t border-slate-200 py-32 text-center">
+        <h2 class="text-5xl font-black uppercase mb-16 italic text-slate-900">Холбоо барих</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-6xl mx-auto px-6">
+            <div class="flex flex-col items-center">
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Утас</p>
+                <div class="flex flex-col gap-2">
+                    <a href="tel:+97688112124" class="text-xl font-black hover:text-slate-500 transition">88112124</a>
+                    <a href="tel:+97699234050" class="text-xl font-black hover:text-slate-500 transition">99234050</a>
+                </div>
+            </div>
+            <div class="flex flex-col items-center">
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Фэйсбүүк</p>
+                <a href="https://www.facebook.com/ArtHouseMGL" target="_blank" class="text-xl font-black hover:text-slate-500 transition">Art House Mongolia</a>
+            </div>
+            <div class="flex flex-col items-center">
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">И-Мэйл</p>
+                <a href="mailto:arthousemgl@gmail.com" class="text-xl font-black hover:text-slate-500 transition lowercase">arthousemgl@gmail.com</a>
+            </div>
+            <div class="flex flex-col items-center">
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Хаяг</p>
+                <a href="https://share.google/xffVHtDPe606IDA6J" 
+                    target="_blank" 
+                    class="text-lg font-black leading-tight hover:text-slate-500 transition text-center">
+                    Улаанбаатар хот, <br>Баянзүрх дүүрэг, 27-р хороо, Сэлбэ 22 гудамж, 525 тоот
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-white border-t text-center font-bold text-[10px] uppercase text-slate-400 tracking-widest">© 2011-2026 Art House | arthouse.mn</footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navIcon = document.getElementById('nav-icon');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            navIcon.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            navIcon.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+        menuToggle.addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>
